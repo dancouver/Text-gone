@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Window</title>
+    <script>
+        function openMainWindow() {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const height = isMobile ? '100%' : '70%';
+            const width = '100%';
+            window.open("{{ url_for('index') }}", '_blank', `height=${height},width=${width}`);
+            window.close();
+        }
+        window.onload = openMainWindow;
+    </script>
+</head>
+<body>
+    <p>Loading...</p>
+</body>
+</html>

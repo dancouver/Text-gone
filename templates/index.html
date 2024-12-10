@@ -1,0 +1,40 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Text App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-12">
+            <div class="top-bar py-2 d-flex justify-content-around align-items-center">
+                <!-- Timer start buttons (5 seconds and 10 seconds) -->
+                <button class="btn btn-primary btn-start" name="start_5" type="button">Start-5</button>
+                <!-- Timer display with data attribute for the initial timer value -->
+                <div class="timer" id="timer" data-timer="{{ initial_timer }}">{{ initial_timer }}</div>
+                <button class="btn btn-primary btn-start" name="start_10" type="button">Start-10</button>
+            </div>
+
+            <!-- Main form for text entry, initially disabled -->
+            <form id="main-form" method="POST" action="{{ url_for('index') }}">
+                <textarea id="text-entry" name="text" class="form-control" placeholder="Enter text here..." disabled>{{ text }}</textarea>
+            </form>
+
+            <!-- Clip-it and Quit buttons -->
+            <div class="bottom-bar py-2 d-flex justify-content-between">
+                <button class="btn btn-secondary" id="clip-it" type="button">Clip-it</button>
+                <button class="btn btn-danger" id="quit" type="button">Quit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Load the external JavaScript file -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
